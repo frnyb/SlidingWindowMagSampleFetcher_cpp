@@ -3,7 +3,7 @@
 SlidingWindowMagSampleFetcher::SlidingWindowMagSampleFetcher(unsigned int bram_uio_number, unsigned int bram_size) 
         : bram(bram_uio_number, bram_size) {
 
-    XSlidingwindowmagsamplefetcher_Initialize(&xmsf, "MagSampleFetcher");
+    XSlidingwindowmagsamplefetcher_Initialize(&xmsf, "SlidingWindowMagSampleFetcher");
 
 }
 
@@ -49,9 +49,11 @@ bool SlidingWindowMagSampleFetcher::Start() {
 
     }
 
-	int n_samples = XSlidingwindowmagsamplefetcher_Get_n_samples_out(&xmsf);
+	uint32_t n_samples = XSlidingwindowmagsamplefetcher_Get_n_samples_out(&xmsf);
 
-    for (int i = 0; i < n_samples; i++) {
+    uint32_t n_samples_per_ch = n_samples / 12;
+
+    for (int i = 0; i < n_samples_per_ch; i++) {
 
         MagSample mag_sample(&bram, 1+i*12);
         samples->push_back(mag_sample);
