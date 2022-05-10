@@ -11,7 +11,7 @@ typedef struct {
 class MagSample {
 public:
     MagSample(uint32_t data[12]);
-    MagSample(BRAM *bram, unsigned int offset);
+    MagSample(BRAM<> *bram, unsigned int offset);
 
     sample_t& operator[](unsigned int);
 
