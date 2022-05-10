@@ -8,7 +8,7 @@ MagSample::MagSample(uint32_t data[12]) {
 
 MagSample::MagSample(BRAM<> *bram, unsigned int offset) {
     for (int i = 0; i < 12; i++) {
-        samples[i] = parseData((*bram)[offset+i]);
+        samples[i] = parseData((*bram)(offset+i));
     }
 }
 
