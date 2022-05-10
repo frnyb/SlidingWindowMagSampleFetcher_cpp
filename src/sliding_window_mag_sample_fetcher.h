@@ -24,7 +24,7 @@ public:
     bool GetSamples(std::vector<MagSample> *samples);
 
 private:
-    BRAM bram;
+    BRAM<> bram;
     XSlidingwindowmagsamplefetcher xmsf;
 
 };
